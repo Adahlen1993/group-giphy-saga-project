@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const favoriteRouter = require('./routes/favorite.router');
 const categoryRouter = require('./routes/category.router');
-
+const homeRouter = require('./routes/home.router')
 const PORT = process.env.PORT || 5001;
 
 
@@ -16,6 +16,7 @@ app.use(express.static('build'));
 /** ---------- EXPRESS ROUTES ---------- **/
 app.use('/api/favorites', favoriteRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/api/home', homeRouter)
 
 
 app.use('/api/search', searchRouter);
