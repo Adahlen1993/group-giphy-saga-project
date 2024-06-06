@@ -10,7 +10,7 @@ export default function Search () {
 
   console.log(favorites);
 
-
+  
 
   useEffect(() => {
     
@@ -30,8 +30,18 @@ export default function Search () {
       };
 
     return (
-        <form>
+        <>
+        <form onSubmit={handleSearchSubmit}>
         <input onChange={searchBarInput}/>
+        <button>Search</button>
         </form>
+        <ul>
+       {search.map((gif)=>(
+        <p><img src={gif.images.original.url}/></p>
+       ))}
+       </ul>
+        </>
+
+
     )
 }
