@@ -1,14 +1,14 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector} from "react-redux";
+import { useState,  useEffect  } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function Search () {
 
     const dispatch = useDispatch();
 
-  const search = useSelector((store) => store.searchList);
+  const search = useSelector((store) => store.searchGifs);
 
-  console.log(favorites);
+  console.log(search);
 
   
 
@@ -17,7 +17,7 @@ export default function Search () {
     dispatch({ type: "FETCH_SEARCH" });
   }, []);
 
-    const [searchBar, setSearchBar] = useState('');
+    const [searchBar, setSearchBar] = useState('Hello');
 
 
     const handleSearchSubmit = event => {
@@ -35,11 +35,14 @@ export default function Search () {
         <input onChange={searchBarInput}/>
         <button>Search</button>
         </form>
-        <ul>
-       {search.map((gif)=>(
-        <p><img src={gif.images.original.url}/></p>
-       ))}
-       </ul>
+        
+        {search.map((gif,i) => (
+            <div className='gif' key = {i}>
+              <img src={gif?.images?.original?.url} />
+              <h6>{gif.title}</h6>
+            </div>
+          )
+        )}
         </>
 
 
