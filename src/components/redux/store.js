@@ -26,15 +26,7 @@ function* fetchSearch() {
   }
 }
 
-<<<<<<< HEAD
-const store = createStore(
-    combineReducers({
-      allGifs,
-      searchGifs,
-    }),
-    applyMiddleware(logger)
-  );
-=======
+
 function* fetchGifsSaga() {
     try {
         const response = yield axios.get('/home');
@@ -43,7 +35,7 @@ function* fetchGifsSaga() {
         console.log(`Error in FETCH saga`, error);
       }
     }
->>>>>>> origin
+
 
 
   function* rootSaga() {
@@ -55,6 +47,7 @@ function* fetchGifsSaga() {
   const store = createStore(
       combineReducers({
           allGifs,
+          searchGifs,
         }),
         applyMiddleware(sagaMiddleware, logger)
     );
