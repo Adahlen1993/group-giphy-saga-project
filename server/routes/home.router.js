@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     const GIPHY_API_KEY = process.env.GIPHY_API_KEY;

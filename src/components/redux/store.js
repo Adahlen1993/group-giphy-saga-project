@@ -13,7 +13,7 @@ const allGifs = (state = [], action) => {
 
 function* fetchGifsSaga() {
     try {
-        const response = yield axios.get('/home');
+        const response = yield axios.get('/api/home');
         yield put({ type: 'SET_GIFS', payload: response.data });
       } catch (error) {
         console.log(`Error in FETCH saga`, error);
