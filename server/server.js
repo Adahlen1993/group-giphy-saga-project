@@ -8,9 +8,6 @@ require('dotenv').config();
 const searchRouter = require('./routes/search.router');
 
 
-
-
-
 /** ---------- MIDDLEWARE ---------- **/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
