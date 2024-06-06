@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Home() {
   const allGifs = useSelector((store) => store.allGifs)
   const dispatch = useDispatch();
+
     console.log('All Gifs', allGifs);
+
     useEffect(() => {
       dispatch({type: 'FETCH_GIFS'});
     }, []);

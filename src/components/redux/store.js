@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 const allGifs = (state = [], action) => {
@@ -10,6 +10,22 @@ const allGifs = (state = [], action) => {
         }
     return state;
 }
+const searchGifs = (state = [], action) => {
+  if(action.type === 'SET_SEARCH' ) {
+    return action.payload
+  }
+  return state;
+}
+
+function* fetchSearch() {
+  try {
+      const favoritesResponse = yield axios.get('/api/search');
+      yield put({ type: 'SET_SEARCH', payload: favoritesResponse.data });
+  } catch (error) {
+      console.log('error fetching search', error);
+  }
+}
+
 
 function* fetchGifsSaga() {
     try {
@@ -21,8 +37,9 @@ function* fetchGifsSaga() {
     }
 
 
-  function* rootSaga() {
 
+  function* rootSaga() {
+    yield takeLatest('FETCH_SEARCH', fetchSearch)
     yield takeEvery('FETCH_GIFS', fetchGifsSaga);
   }
 
@@ -30,6 +47,7 @@ function* fetchGifsSaga() {
   const store = createStore(
       combineReducers({
           allGifs,
+          searchGifs,
         }),
         applyMiddleware(sagaMiddleware, logger)
     );
