@@ -26,6 +26,22 @@ function* fetchSearch() {
   }
 }
 
+function favoriteReducer(state = [], action) {
+  if(action.type === 'SET_FAVORITE'){
+    return action.payload
+  }
+  return state;
+}
+
+function* favoriteSaga(){
+  try{
+    const response = yield axios.get('/api/favorites');
+    yield put ({ type: 'SET_FAVORITE', payload: response.data });
+  } catch (error) {
+    console.log(`Error in Favorite saga`, error);
+  }
+}
+
 
 function* fetchGifsSaga() {
     try {
@@ -41,6 +57,7 @@ function* fetchGifsSaga() {
   function* rootSaga() {
     yield takeLatest('FETCH_SEARCH', fetchSearch)
     yield takeEvery('FETCH_GIFS', fetchGifsSaga);
+    yield takeLatest('FETCH_FAVORITE', favoriteSaga)
   }
 
   const sagaMiddleware = createSagaMiddleware();
@@ -48,6 +65,7 @@ function* fetchGifsSaga() {
       combineReducers({
           allGifs,
           searchGifs,
+          favoriteReducer,
         }),
         applyMiddleware(sagaMiddleware, logger)
     );
