@@ -17,10 +17,10 @@ const searchGifs = (state = [], action) => {
   return state;
 }
 
-function* fetchSearch() {
+function* fetchSearch(action) {
   try {
-      const favoritesResponse = yield axios.get('/api/search');
-      yield put({ type: 'SET_SEARCH', payload: favoritesResponse.data });
+      const searchResponse = yield axios.get(`/api/search/${action.payload}`);
+      yield put({ type: 'SET_SEARCH', payload: searchResponse.data });
   } catch (error) {
       console.log('error fetching search', error);
   }
