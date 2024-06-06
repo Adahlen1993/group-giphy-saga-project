@@ -23,8 +23,6 @@ CREATE TABLE "favorites" (
   "isFavorited" BOOLEAN DEFAULT FALSE,
   "categories_id" integer REFERENCES "categories"
   );
-
-
 -- You'll need a "favorites" table for storing each instance of
 -- a Giphy image that has been "favorited."
 -- Each favorite image can be assigned one of the existing
