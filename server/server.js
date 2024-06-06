@@ -5,9 +5,11 @@ const categoryRouter = require('./routes/category.router');
 const homeRouter = require('./routes/home.router')
 const PORT = process.env.PORT || 5001;
 require('dotenv').config();
-
-
 const searchRouter = require('./routes/search.router');
+
+
+
+
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(express.json());
