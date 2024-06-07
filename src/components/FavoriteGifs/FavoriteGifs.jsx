@@ -14,11 +14,13 @@ export default function FavoriteGifs (){
     return (
         <>
             <h2>My Favorite Gifs</h2>
-            {favoriteGifs.map((favGifs, i) => {
-                <div className='gif' key={i}>
-                    <img src={favGifs.url} />
-                </div>
-            })}
+            {favoriteGifs.map((gif,i) => (
+            <div className='gif' key = {i}>
+              <img src={gif.url} />
+              <h6>{gif.title}</h6>
+            </div>
+          )
+        )}
         </>
     )
 }

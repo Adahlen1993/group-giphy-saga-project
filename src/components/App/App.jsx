@@ -2,6 +2,7 @@ import FavoriteGifs from "../FavoriteGifs/FavoriteGifs.jsx";
 import Home from "../Home/Home";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import Search from "../Search/Search";
+import FavoriteCategory from "../FavoriteCategory/FavoriteCategory.jsx";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
 
         <Route path="/search">
           <Search />
+        </Route>
+        <Route path='/favorite/id'>
+          <FavoriteCategory/>
         </Route>
       </Router>
     </div>
