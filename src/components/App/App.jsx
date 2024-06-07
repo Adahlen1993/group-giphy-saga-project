@@ -3,14 +3,14 @@ import Home from "../Home/Home";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import Search from "../Search/Search";
 import FavoriteCategory from "../FavoriteCategory/FavoriteCategory.jsx";
-
+import { Nav } from "react-bootstrap";
 import './App.css';
 
 function App() {
   return (
     <div className="main-div">
       <Router>
-        <section className="darkgrey">
+        <section >
 
         
       <Nav className='navbar'>
