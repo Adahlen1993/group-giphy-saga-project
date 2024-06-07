@@ -25,13 +25,18 @@ router.post('/', (req, res) => {
   const newFavorite = req.body;
   const queryText = `
   INSERT INTO "favorites" 
-  ("url", "categories_id")
+
+
+  ("title", "url" )
+
   VALUES
   ($1, $2) RETURNING *;
   `;
   const queryValues = [
-    newFavorite.url,
-    newFavorite.categories_id
+
+    newFavorite.title,
+    newFavorite.url
+
   ];
   pool.query(queryText, queryValues)
   .then((result) => { res.sendStatus(201); })
@@ -40,6 +45,7 @@ router.post('/', (req, res) => {
     res.sendStatus(500);
   });
 });
+
 // update a favorite's associated category
 router.put('/:id', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
