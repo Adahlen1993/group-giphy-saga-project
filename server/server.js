@@ -17,8 +17,6 @@ app.use(express.static('build'));
 app.use('/api/favorites', favoriteRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/home', homeRouter)
-
-
 app.use('/api/search', searchRouter);
 
 /** ---------- START SERVER ---------- **/

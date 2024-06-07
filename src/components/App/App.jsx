@@ -7,25 +7,20 @@ function App() {
   return (
     <div>
       <Router>
-      <Route
-            path='/'
-            exact
-          >
-      <Home />
-          
-          </Route>
+        <Route path="/" exact>
+          <Home />
+        </Route>
 
-          <Route path='/favorites'>
-            <FavoriteGifs />
-          </Route>
-    
-          <Route path='/search'>
-            <Search/>
-          </Route>
+        <Route path="/favorites">
+          <FavoriteGifs />
+        </Route>
+
+        <Route path="/search">
+          <Search />
+        </Route>
       </Router>
     </div>
   );
 }
-
 
 export default App;
