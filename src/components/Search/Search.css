@@ -1,0 +1,17 @@
+.search-btn .search-input {
+    display: inline-block;
+    height: auto;
+    width: auto;
+
+}
+
+.search-btn {
+    margin-top: 25px;
+}
+
+.search-input {
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+
