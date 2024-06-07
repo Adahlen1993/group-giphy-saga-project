@@ -5,7 +5,9 @@ const router = express.Router();
 // return all favorite images
 router.get("/", (req, res) => {
   const queryText = `
+
  SELECT * FROM "favorites";
+
   `;
   pool
     .query(queryText)
@@ -49,23 +51,21 @@ router.put("/:id", (req, res) => {
 
   const queryText = `
   UPDATE "favorites"
-  SET
-    "categories_id"=$2
-  JOIN 
-    "categories" ON "categories"."id" = "favorites"."categories_id";
-  WHERE
-    "favorites"."url"=$1
-  `;
-  const queryValues = [updatedFavorite.url, updatedFavorite.categories_id];
-  pool
-    .query(queryText, queryValues)
-    .then((result) => {
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      console.log("Error in PUT /api/favorites/:id", err);
-      res.sendStatus(500);
-    });
+
+  SET "categories_id" = $2
+  WHERE "favorites"."id" = $1;
+  `
+  const queryValues = [
+    updatedFavorite.id,
+    updatedFavorite.categories_id
+  ]
+  pool.query(queryText, queryValues)
+  .then((result) => { res.sendStatus(200); })
+  .catch((err) => {
+    console.log('Error in PUT /api/favorites/:id', err);
+    res.sendStatus(500);
+  });
+
 });
 
 router.get('/:url', (req, res) => {
