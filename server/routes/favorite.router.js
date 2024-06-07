@@ -1,6 +1,5 @@
 const express = require('express');
 const pool = require('../modules/pool');
-const axios = require('axios');
 const router = express.Router();
 
 // return all favorite images
@@ -8,12 +7,17 @@ router.get('/', (req, res) => {
   const queryText = `
   SELECT "favorites"."categories_id", "favorites"."url", "favorites"."isFavorited"
   FROM "favorites" JOIN "categories"
-  ON "categories"."id" = "favorites"."categories_id";
+  ON "categories"."id" = "favorites"."categories_id"
+  WHERE "favorites"."isFavorited" = true;
   `;
-  axios.get()
-  .then((response) => {
-    res.send(response.data.data);
+  pool.query(queryText)
+  .then((result) => {
+    res.send(result.rows);
   })
+  .catch((err) => {
+    console.log('Error in GET /api/favorites', err);
+    res.sendStatus(500);
+  });
 });
 
 // add a new favorite
@@ -26,7 +30,8 @@ router.post('/', (req, res) => {
   ($1, $2) RETURNING *;
   `;
   const queryValues = [
-    newFavorite.url
+    newFavorite.url,
+    newFavorite.categories_id
   ];
   pool.query(queryText, queryValues)
   .then((result) => { res.sendStatus(201); })
@@ -50,7 +55,7 @@ router.put('/:id', (req, res) => {
   `
   const queryValues = [
     updatedFavorite.url,
-    updatedFavorite.isFavorited
+    updatedFavorite.categories_id
   ]
   pool.query(queryText, queryValues)
   .then((result) => { res.sendStatus(200); })
