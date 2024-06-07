@@ -52,7 +52,7 @@ function* addFavoriteSaga(action) {
   }
 }
 
-function* updateFavorite(action) {
+function* updateFavorite() {
   try {
    const favorite = yield axios.get(`/api/favorites/category`);
     console.log(favorite);
@@ -79,11 +79,13 @@ function* fetchGifsSaga() {
 
     function* changeFavoriteCategory(action) {
         try {
-          yield console.log(action.payload);
+          
+          yield console.log('action.payload', action.payload);
+        
           yield axios.put("/api/favorites", action.payload);
           
         } catch (error) {
-          console.log("Error with Post:", error);
+          console.log("Error with PUT:", error);
         }
       }
 
