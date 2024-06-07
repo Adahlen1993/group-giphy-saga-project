@@ -21,7 +21,7 @@ export default function Home() {
             <div className='gif' key = {i}>
               <img src={gif?.images?.original?.url} />
               <h6>{gif.title}</h6>
-              <button onClick={()=> addFavorite(gif)}>Favorite?</button>
+              <button class="btn btn-primary" onClick={()=> addFavorite(gif)}>Favorite?</button>
             </div>
           )
         )}

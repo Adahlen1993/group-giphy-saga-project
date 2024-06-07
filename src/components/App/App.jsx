@@ -10,7 +10,7 @@ function App() {
       <Router>
       <nav className='navbar'>
           <ul>
-            <li>
+            <li>gi
               <NavLink
                 to='/'
                 exact
