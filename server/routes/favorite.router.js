@@ -40,8 +40,10 @@ router.put('/:id', (req, res) => {
   UPDATE "favorites"
   SET
     "categories_id"=$2
+  JOIN 
+    "categories" ON "categories"."id" = "favorites"."categories_id";
   WHERE
-    "url"=$1
+    "favorites"."url"=$1
   `
   const queryValues = [
     updatedFavorite.url,
