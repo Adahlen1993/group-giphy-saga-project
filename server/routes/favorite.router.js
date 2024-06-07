@@ -17,25 +17,20 @@ router.get('/', (req, res) => {
 });
 
 // add a new favorite
-router.post('/', (req, res) => {
-  const newFavorite = req.body;
-  const queryText = `
-  INSERT INTO "favorites" 
-  ("url", "categories_id")
-  VALUES
-  ($1, $2) RETURNING *;
-  `;
-  const queryValues = [
-    newFavorite.url
-  ];
-  pool.query(queryText, queryValues)
-  .then((result) => { res.sendStatus(201); })
-  .catch((err) => {
-    console.log('Error in POST /api/favorites', err);
-    res.sendStatus(500);
-  });
+router.post("/", (req, res) => {
+  console.log("POST /api/favorites");
+  console.log('req.body.images.original.url: ', req.body.images.original.url)
+  pool
+    .query(`INSERT INTO "favorite" ("name", "url") VALUES ('${req.body.title}', '${req.body.images.original.url}');`)
+    .then((result) => {
+      console.log("in /api/favorite POST");
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("Error POST /api/favorite", error);
+      res.sendStatus(500);
+    });
 });
-
 // update a favorite's associated category
 router.put('/:id', (req, res) => {
   // req.body should contain a category_id to add to this favorite image

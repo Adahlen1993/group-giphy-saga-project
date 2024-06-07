@@ -42,6 +42,14 @@ function* favoriteSaga(){
   }
 }
 
+function* addFavoriteSaga(action) {
+  try {
+    yield axios.post("/api/favorites", action.payload);
+    
+  } catch (error) {
+    console.log("Error with Post:", error);
+  }
+}
 
 function* fetchGifsSaga() {
     try {
@@ -58,6 +66,7 @@ function* fetchGifsSaga() {
     yield takeLatest('FETCH_SEARCH', fetchSearch)
     yield takeEvery('FETCH_GIFS', fetchGifsSaga);
     yield takeLatest('FETCH_FAVORITE', favoriteSaga)
+    yield takeLatest('ADD_FAVORITE', addFavoriteSaga)
   }
 
   const sagaMiddleware = createSagaMiddleware();
