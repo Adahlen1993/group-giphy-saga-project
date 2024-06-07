@@ -3,13 +3,17 @@ import Home from "../Home/Home";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import Search from "../Search/Search";
 import FavoriteCategory from "../FavoriteCategory/FavoriteCategory.jsx";
+
 import './App.css';
 
 function App() {
   return (
     <div className="main-div">
       <Router>
-      <nav className='navbar'>
+        <section className="darkgrey">
+
+        
+      <Nav className='navbar'>
           <ul>
             <li>
               <NavLink
@@ -32,7 +36,7 @@ function App() {
               </NavLink>
             </li>
           </ul>
-        </nav>
+        </Nav>
         <Route path="/" exact>
           <Home />
         </Route>
@@ -44,9 +48,13 @@ function App() {
         <Route path="/search">
           <Search />
         </Route>
-        <Route path='/favorite/id'>
+
+        <Route path='/favorite/:url'>
           <FavoriteCategory/>
         </Route>
+
+    
+        </section>
       </Router>
     </div>
   );
