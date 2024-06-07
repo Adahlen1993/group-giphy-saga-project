@@ -43,7 +43,7 @@ function App() {
         <Route path="/search">
           <Search />
         </Route>
-        <Route path='/favorite/id'>
+        <Route path='/favorite/:url'>
           <FavoriteCategory/>
         </Route>
       </Router>

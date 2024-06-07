@@ -6,9 +6,9 @@ export default function SearchItem ({gif, i}) {
     const dispatch = useDispatch();
     
     const addFavorite = (event) => {
-        dispatch({type: 'ADD_FAVORITE', payload: {title: event.title, url: event.images.original.url}})
-        console.log(gif);
-        history.push(`/favorite/${gif.url}`)
+        dispatch({type: 'ADD_FAVORITE', payload: {title: event.title, url: event.images.original.url, temp_id: event.i}})
+        console.log(gif.url);
+        history.push(`/favorite/category`)
       };
     return (
         <div className='gif' key = {i}>

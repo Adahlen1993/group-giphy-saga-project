@@ -68,6 +68,19 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.get('/:url', (req, res) => {
+  const queryText = `
+    SELECT * FROM "favorites"
+      WHERE url=$1;
+  `;
+  pool.query(queryText, [req.params.url])
+    .then((result) => { res.send(result.rows); })
+    .catch((err) => {
+      console.log('Error in GET /api/favorites/:url', err);
+      res.sendStatus(500);
+    });
+});
+
 // delete a favorite
 router.delete("/:id", (req, res) => {
   res.sendStatus(200);
