@@ -25,13 +25,18 @@ router.post('/', (req, res) => {
   const newFavorite = req.body;
   const queryText = `
   INSERT INTO "favorites" 
+
+
   ("title", "url" )
+
   VALUES
   ($1, $2) RETURNING *;
   `;
   const queryValues = [
+
     newFavorite.title,
     newFavorite.url
+
   ];
   pool.query(queryText, queryValues)
   .then((result) => { res.sendStatus(201); })
