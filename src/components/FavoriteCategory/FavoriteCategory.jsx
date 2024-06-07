@@ -12,8 +12,9 @@ export default function FavoriteCategory () {
     const dispatch = useDispatch();
     console.log('favoriteGifs', favoriteGifs[favoriteGifs.length-1]);
     const [category, setCategory] = useState()
+    const favoriteGif = favoriteGifs[favoriteGifs.length-1];
     useEffect(() => {
-        dispatch({ type: 'FETCH_FAVORITE' })
+        dispatch({ type: 'FETCH_FAVORITE_CATEGORY' })
     }, [])
 
     const categoryInput = (event) => {
@@ -31,8 +32,8 @@ export default function FavoriteCategory () {
     return (
         <>
             <h2>Favorite Gif?</h2>
-          <img src={favoriteGifs[favoriteGifs.length-1].url}/>
-          <h4>{favoriteGifs[favoriteGifs.length-1].title}</h4>
+          <img src={favoriteGif.url}/>
+          <h4>{favoriteGifs.title}</h4>
           <form onSubmit={handleCategorySubmit}>
         <ToggleButtonGroup type="radio" name="options">
           <ToggleButton

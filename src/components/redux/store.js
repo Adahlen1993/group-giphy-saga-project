@@ -54,14 +54,14 @@ function* addFavoriteSaga(action) {
 
 function* updateFavorite(action) {
   try {
-   const favorite = yield axios.get(`/api/favorites/${action.payload}`);
+   const favorite = yield axios.get(`/api/favorites/category`);
     console.log(favorite);
     yield put({type: 'SET_UPDATE', payload: favorite.data[0]})
 } catch (error) {
     console.log('error posting an element', error);
 }  
 }
-function updateReducer(state = {}, action) {
+function updateReducer(state = [], action) {
   if(action.type === 'SET_UPDATE'){
     return action.payload
   }
