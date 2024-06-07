@@ -20,6 +20,7 @@ INSERT INTO "categories"
 
 CREATE TABLE "favorites" (
   "id" SERIAL PRIMARY KEY,
+  "title" TEXT,
   "isFavorited" BOOLEAN DEFAULT FALSE,
   "categories_id" integer REFERENCES "categories"
   );

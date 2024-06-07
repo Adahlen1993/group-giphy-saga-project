@@ -44,6 +44,7 @@ function* favoriteSaga(){
 
 function* addFavoriteSaga(action) {
   try {
+    yield console.log(action.payload);
     yield axios.post("/api/favorites", action.payload);
     
   } catch (error) {
