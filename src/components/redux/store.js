@@ -52,6 +52,22 @@ function* addFavoriteSaga(action) {
   }
 }
 
+function* updateFavorite(action) {
+  try {
+   const favorite = yield axios.get(`/api/favorites/${action.payload}`);
+    console.log(favorite);
+    yield put({type: 'SET_UPDATE', payload: favorite.data[0]})
+} catch (error) {
+    console.log('error posting an element', error);
+}  
+}
+function updateReducer(state = {}, action) {
+  if(action.type === 'SET_UPDATE'){
+    return action.payload
+  }
+  return state;
+}
+
 function* fetchGifsSaga() {
     try {
         const response = yield axios.get('/api/home');
@@ -68,6 +84,7 @@ function* fetchGifsSaga() {
     yield takeEvery('FETCH_GIFS', fetchGifsSaga);
     yield takeLatest('FETCH_FAVORITE', favoriteSaga)
     yield takeLatest('ADD_FAVORITE', addFavoriteSaga)
+    yield takeLatest('FETCH_FAVORITE_CATEGORY',updateFavorite )
   }
 
   const sagaMiddleware = createSagaMiddleware();
@@ -76,6 +93,7 @@ function* fetchGifsSaga() {
           allGifs,
           searchGifs,
           favoriteReducer,
+          updateReducer,
         }),
         applyMiddleware(sagaMiddleware, logger)
     );
