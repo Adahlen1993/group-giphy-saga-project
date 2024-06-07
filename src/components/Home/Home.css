@@ -23,6 +23,7 @@ img {
 h6{
     width: 250px;
     text-align: center;
+    color: white
 }
 
 .center {
@@ -30,5 +31,7 @@ h6{
     justify-content: center;
     /* align-items: center; */
   }
-
+h1{
+    color: white;
+}
 

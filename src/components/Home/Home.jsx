@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import {useHistory, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import './Home.css';
+import '../Home/Home';
 
 export default function Home() {
+  const history = useHistory();
   const allGifs = useSelector((store) => store.allGifs)
   const dispatch = useDispatch();
   const addFavorite = (event) => {
-       
+    history.push(`/favorite/category`)
     dispatch({type: 'ADD_FAVORITE', payload: {title: event.title, url: event.images.original.url}})
   };
     console.log('All Gifs', allGifs);

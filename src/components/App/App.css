@@ -4,6 +4,13 @@ background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(126,47,148,0.47805059523809523) 76%, rgba(0,212,255,1) 100%);
 }
 Nav {
+    
     background-color: rgb(83, 83, 140);
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color:white;
+}
+p{
+    color: white;
+}

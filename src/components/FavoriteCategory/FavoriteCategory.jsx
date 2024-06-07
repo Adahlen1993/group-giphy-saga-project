@@ -30,7 +30,7 @@ const history = useHistory();
 
     return (
         <>
-            <h2>Favorite Gif?</h2>
+            <h2 className="favorite">Favorite Gif?</h2>
           <img src={favoriteGifs.url}/>
           <h4>{favoriteGifs.title}</h4>
           <form onSubmit={handleCategorySubmit}>
@@ -86,7 +86,7 @@ const history = useHistory();
           </ToggleButton>
 
         
-          <button onClick={handleCategorySubmit}>Submit</button>
+          <ToggleButton onClick={handleCategorySubmit}>Submit</ToggleButton>
         </ToggleButtonGroup>
       </form>
           
