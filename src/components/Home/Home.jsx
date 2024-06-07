@@ -16,7 +16,7 @@ export default function Home() {
     }, []);
 
     return(
-        <section className='lightyellow'> 
+        <section> 
         <h1>A-Team Giphy Gallery</h1>
         <div className='row'>
         {allGifs.map((gif,i) => (

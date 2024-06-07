@@ -11,14 +11,14 @@ img {
     height: 250px;
   }
 
-#card
+/* #card
 {
     margin-left: 50px;
     display: inline-block;
     vertical-align: auto;
     padding-block: 10px;
     width: auto;
-}
+} */
 
 h6{
     width: 250px;
@@ -31,11 +31,4 @@ h6{
     /* align-items: center; */
   }
 
-  .lightyellow {
-    background-color: rgb(154, 154, 48);
-  }
 
-  .darkgrey {
-    background-color: rgb(36, 7, 4);
-    display: inline-block;
-}
