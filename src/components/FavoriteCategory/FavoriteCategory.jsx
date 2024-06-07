@@ -6,14 +6,14 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 
 
 export default function FavoriteCategory () {
-
-    const { url } = useParams();
-    const favoriteGifs = useSelector(store => store.favoriteReducer);
+const history = useHistory();
+    const favoriteGifs = useSelector(store => store.updateReducer);
     const dispatch = useDispatch();
-    console.log('favoriteGifs', favoriteGifs[favoriteGifs.length-1]);
+    console.log('favoriteGifs.id', favoriteGifs.id);
     const [category, setCategory] = useState()
+  
     useEffect(() => {
-        dispatch({ type: 'FETCH_FAVORITE' })
+        dispatch({ type: 'FETCH_FAVORITE_CATEGORY' })
     }, [])
 
     const categoryInput = (event) => {
@@ -23,7 +23,7 @@ export default function FavoriteCategory () {
       const handleCategorySubmit = (event) => {
         event.preventDefault();
     
-        dispatch({ type: "ADD_CATEGORY", payload: {category_id:category} });
+        dispatch({ type: "UPDATE_CATEGORY", payload: {id:favoriteGifs.id, categories_id: category} });
         history.push("/search");
         
       };
@@ -31,8 +31,8 @@ export default function FavoriteCategory () {
     return (
         <>
             <h2>Favorite Gif?</h2>
-          <img src={favoriteGifs[favoriteGifs.length-1].url}/>
-          <h4>{favoriteGifs[favoriteGifs.length-1].title}</h4>
+          <img src={favoriteGifs.url}/>
+          <h4>{favoriteGifs.title}</h4>
           <form onSubmit={handleCategorySubmit}>
         <ToggleButtonGroup type="radio" name="options">
           <ToggleButton
