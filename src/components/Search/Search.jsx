@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import SearchItem from "../SearchItem/SearchItem";
+import './Search.css';
 
 export default function Search () {
 
@@ -37,13 +38,17 @@ export default function Search () {
     return (
         <>
         <form onSubmit={handleSearchSubmit}>
-        <input onChange={searchBarInput}/>
-        <button>Search</button>
+          <div className="search-input">
+            <input className="btn-outline-primary" onChange={searchBarInput}/>
+            <button className="btn btn-warning btn-outline-primary">Search</button>
+          </div>
         </form>
-        {search.map((gif,i) => (
-            <SearchItem gif={gif} key={i} />
-          )
-        )}
+          <div className="row">
+            {search.map((gif,i) => (
+                <SearchItem gif={gif} key={i} />
+              )
+            )}
+          </div>
         </>
 
 

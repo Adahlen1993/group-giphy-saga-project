@@ -3,10 +3,11 @@ import Home from "../Home/Home";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import Search from "../Search/Search";
 import FavoriteCategory from "../FavoriteCategory/FavoriteCategory.jsx";
+import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className="main-div">
       <Router>
       <nav className='navbar'>
           <ul>

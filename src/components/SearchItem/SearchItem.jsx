@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory, useParams} from 'react-router-dom';
+import './SearchItem.css'
 
 export default function SearchItem ({gif, i}) {
     const history= useHistory();
@@ -11,10 +12,12 @@ export default function SearchItem ({gif, i}) {
         history.push(`/favorite/${gif.url}`)
       };
     return (
-        <div className='gif' key = {i}>
+        <div className='gif' key = {i} id='card'>
               <img  src={gif?.images?.original?.url} />
               <h6>{gif.title}</h6>
-              <button onClick={()=> addFavorite(gif)}>Favorite?</button>
+              <div className="favorite-btn">
+              <button className="btn btn-danger btn-outline-primary" onClick={()=> addFavorite(gif)}>Favorite?</button>
+              </div>
             </div>
     )
 }
