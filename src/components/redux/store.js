@@ -61,6 +61,15 @@ function* fetchGifsSaga() {
       }
     }
 
+    function* changeFavoriteCategory(action) {
+        try {
+          yield console.log(action.payload);
+          yield axios.put("/api/favorites", action.payload);
+          
+        } catch (error) {
+          console.log("Error with Post:", error);
+        }
+      }
 
 
   function* rootSaga() {
@@ -68,6 +77,7 @@ function* fetchGifsSaga() {
     yield takeEvery('FETCH_GIFS', fetchGifsSaga);
     yield takeLatest('FETCH_FAVORITE', favoriteSaga)
     yield takeLatest('ADD_FAVORITE', addFavoriteSaga)
+    yield takeLatest('UPDATE_CATEGORY', changeFavoriteCategory )
   }
 
   const sagaMiddleware = createSagaMiddleware();

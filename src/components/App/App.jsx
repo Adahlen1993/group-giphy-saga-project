@@ -3,14 +3,20 @@ import Home from "../Home/Home";
 import { HashRouter as Router, Route, NavLink } from "react-router-dom";
 import Search from "../Search/Search";
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
+import Nav from 'react-bootstrap/Nav';
+
+
 
 function App() {
   return (
     <div>
       <Router>
-      <nav className='navbar'>
+        <section className="darkgrey">
+
+        
+      <Nav className='navbar'>
           <ul>
-            <li>gi
+            <li>
               <NavLink
                 to='/'
                 exact
@@ -31,7 +37,7 @@ function App() {
               </NavLink>
             </li>
           </ul>
-        </nav>
+        </Nav>
         <Route path="/" exact>
           <Home />
         </Route>
@@ -43,6 +49,7 @@ function App() {
         <Route path="/search">
           <Search />
         </Route>
+        </section>
       </Router>
     </div>
   );

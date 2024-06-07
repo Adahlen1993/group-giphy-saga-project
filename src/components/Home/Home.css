@@ -1,0 +1,41 @@
+.margin {
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 250px;
+    height: 250px;
+  }
+
+#card
+{
+    margin-left: 50px;
+    display: inline-block;
+    vertical-align: auto;
+    padding-block: 10px;
+    width: auto;
+}
+
+h6{
+    width: 250px;
+    text-align: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+  }
+
+  .lightyellow {
+    background-color: rgb(154, 154, 48);
+  }
+
+  .darkgrey {
+    background-color: rgb(36, 7, 4);
+    display: inline-block;
+}
