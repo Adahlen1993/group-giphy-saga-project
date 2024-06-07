@@ -4,11 +4,11 @@ import {useHistory, useParams} from 'react-router-dom';
 export default function SearchItem ({gif, i}) {
     const history= useHistory();
     const dispatch = useDispatch();
+    
     const addFavorite = (event) => {
-
         dispatch({type: 'ADD_FAVORITE', payload: {title: event.title, url: event.images.original.url}})
         console.log(gif);
-        history.push(`/favorite/${event.title}`)
+        history.push(`/favorite/${gif.url}`)
       };
     return (
         <div className='gif' key = {i}>
